@@ -3,13 +3,15 @@ Summary(pl):	SuckMT - wielow±tkowy zamiennik sucka
 Name:		suckmt
 Version:	0.41
 Release:	1
-Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 License:	GPL
 Group:		Applications/News
 Group(de):	Applikationen/News
 Group(pl):	Aplikacje/News
+Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
 Provides:	news-sucker
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This package contains software to download news from an NNTP server to

@@ -2,7 +2,7 @@ Summary:	SuckMT, a multithreaded suck replacement
 Summary(pl):	SuckMT - wielow±tkowy zamiennik sucka
 Name:		suckmt
 Version:	0.54
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/News
 Group(de):	Applikationen/News
@@ -57,8 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/suckmt
-%attr(644,news,news) %dir %{_sysconfdir}/suckmt
-%config(noreplace,missingok) %verify(not md5 size mtime) %attr(644,news,news) %{_sysconfdir}/suckmt/suckmt.ini
+%attr(750,news,news) %dir %{_sysconfdir}/suckmt
+%config(noreplace,missingok) %verify(not md5 size mtime) %attr(660,news,news) %{_sysconfdir}/suckmt/suckmt.ini
 %attr(750,news,news) %dir %{_var}/spool/suckmt
 %attr(750,news,news) %dir %{_var}/spool/suckmt/in.coming
 %attr(750,news,news) %dir %{_var}/lib/suckmt

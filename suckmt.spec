@@ -1,13 +1,15 @@
 Summary:	SuckMT, a multithreaded suck replacement
 Summary(pl):	SuckMT - wielow±tkowy zamiennik sucka
 Name:		suckmt
-Version:	0.41
+Version:	0.54
 Release:	1
 License:	GPL
 Group:		Applications/News
 Group(de):	Applikationen/News
 Group(pl):	Aplikacje/News
 Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
+Source1:	suckmt-scripts.tar.gz
+Patch:		suckmt-DESTDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 Provides:	news-sucker
@@ -30,6 +32,8 @@ do serwera NNTP potrzebujesz narzêdzi z pakietu suck.
 
 %prep
 %setup -q
+%patch -p0
+
 %build
 aclocal
 autoconf
@@ -39,14 +43,23 @@ automake -a -c
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_var}/lib/suckmt
+tar zx -f %{SOURCE1} -C $RPM_BUILD_ROOT%{_var}/lib/suckmt
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf INSTALL README ChangeLog suckmt.ini.sample
+gzip -9nf INSTALL README ChangeLog suckmt.ini.sample AUTHORS COPYING NEWS
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {INSTALL,README,ChangeLog,suckmt.ini.sample}.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/suckmt
+%attr(644,news,news) %dir %{_sysconfdir}/suckmt
+%config(noreplace,missingok) %verify(not md5 size mtime) %attr(644,news,news) %{_sysconfdir}/suckmt/suckmt.ini
+%attr(750,news,news) %dir %{_var}/spool/suckmt
+%attr(750,news,news) %dir %{_var}/spool/suckmt/in.coming
+%attr(750,news,news) %dir %{_var}/lib/suckmt
+%attr(750,news,news) %{_var}/lib/suckmt/*

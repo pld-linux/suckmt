@@ -24,7 +24,7 @@ autoconf
 automake
 LDFLAGS="-s"; export LDFLAGS
 %configure
-make
+%{__make}
 
 %install
 %{__make} install DESTDIR=$RPM_BUILD_ROOT

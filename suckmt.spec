@@ -35,7 +35,7 @@ do serwera NNTP potrzebujesz narzêdzi z pakietu suck.
 %build
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure
 %{__make}
 

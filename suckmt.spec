@@ -1,15 +1,16 @@
 Summary:	SuckMT, a multithreaded suck replacement
 Summary(pl):	SuckMT - wielow±tkowy zamiennik sucka
 Name:		suckmt
-Version:	0.54
-Release:	3
+Version:	0.55
+Release:	1
 License:	GPL
 Group:		Applications/News
-Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
-# Source0-md5:	2ebb3480f6aa9c80858ba4b1732e2a20
+Source0:	http://oss.basjes.nl/SuckMT/Files/%{name}-%{version}.tar.gz
+# Source0-md5:	7306deaef3f0c4ef9ff5c65070b1547a
 Source1:	%{name}-scripts.tar.gz
 # Source1-md5:	7355887f92e953171b903253c4c004e1
-Patch0:		%{name}-DESTDIR.patch
+Patch0:		%{name}-ac.patch
+URL:		http://oss.basjes.nl/SuckMT/
 BuildRequires:	autoconf
 BuildRequires:	automake
 Provides:	news-sucker
@@ -32,21 +33,22 @@ do serwera NNTP potrzebujesz narzêdzi z pakietu suck.
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p1
 
 %build
-%{__aclocal}
-%{__autoconf}
-%{__automake}
+%{__make} configure
 %configure
-%{__make}
+%{__make} \
+	COMPILER_DEBUG="%{rpmcflags} -DSUCK_CONFIG_FILE=\\\"%{_sysconfdir}/suckmt/suckmt.ini\\\""
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_var}/lib/suckmt
 tar zx -f %{SOURCE1} -C $RPM_BUILD_ROOT%{_var}/lib/suckmt
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} rpminstall \
+	DESTDIR=$RPM_BUILD_ROOT \
+	configdir=%{_sysconfdir}/suckmt
 
 %clean
 rm -rf $RPM_BUILD_ROOT

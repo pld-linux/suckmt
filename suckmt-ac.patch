@@ -1,0 +1,20 @@
+--- suckmt-0.55/configure.in_.orig	2003-04-13 22:37:12.000000000 +0200
++++ suckmt-0.55/configure.in_	2004-04-08 20:38:07.534693456 +0200
+@@ -158,16 +158,8 @@
+ 
+ dnl Uncomment next line to try to use gcc version 3 
+ dnl CCC="gcc3"
+-AC_PROG_CXX
+-
+-if test x$regexpp = xfalse;
+-then
+-dnl The regular C compiler is needed
+-dnl Use the selected C++ compiler for C code aswell
+-CC=$CXX
+ AC_PROG_CC
+-fi
+-
++AC_PROG_CXX
+ 
+ dnl AC_PROG_RANLIB
+ dnl Checks for libraries.

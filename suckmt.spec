@@ -22,7 +22,6 @@ will still need tools from the suck package.
 aclocal
 autoconf
 automake
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 

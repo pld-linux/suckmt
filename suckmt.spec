@@ -6,8 +6,8 @@ Release:	2
 License:	GPL
 Group:		Applications/News
 Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
-Source1:	suckmt-scripts.tar.gz
-Patch:		suckmt-DESTDIR.patch
+Source1:	%{name}-scripts.tar.gz
+Patch0:		%{name}-DESTDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 Provides:	news-sucker

@@ -1,0 +1,53 @@
+--- Makefile.am.new	Tue Aug 28 20:21:15 2001
++++ Makefile.am	Fri Jan 25 14:03:20 2002
+@@ -23,10 +23,10 @@
+ EXTRA_PROGRAMS = suckmtstatic
+ 
+ DOCS=README ChangeLog INSTALL suckmt.lsm suckmt.ini.sample AUTHORS COPYING README NEWS
+-datadir=${prefix}/var/spool/suckmt
+-docdir=${prefix}/usr/doc/packages/suckmt
+-configdir=${prefix}/etc
+-bindir=${prefix}/usr/bin
++datadir=/var/spool/suckmt
++docdir=${prefix}/doc/packages/suckmt
++configdir=${sysconfdir}/suckmt
++bindir=${prefix}/bin
+ #-------------------------
+ 
+ if DEBUG
+@@ -319,25 +319,23 @@
+         | sed "s/\/tmp\//C:\\\\TEMP\\\\SuckMT\\\\/g" > suckmt.ini.sample.win32
+ 
+ install: rpminstall 
+-	if [ -s $(configdir)/suckmt.ini ];
+-	then
+-	    NOW=`date`
+-	    cp -f $(configdir)/suckmt.ini "$(configdir)/suckmt.ini-backup-${NOW}"
+-	    echo Your original $(configdir)/suckmt.ini has been backed up as "$(configdir)/suckmt.ini-backup-${NOW}"
++	if [ -s $(DESTDIR)$(configdir)/suckmt.ini ]; then \
++	    NOW=`date`; \
++	    cp -f $(DESTDIR)$(configdir)/suckmt.ini "$(DESTDIR)$(configdir)/suckmt.ini-backup-${NOW}"; \
++	    echo Your original $(DESTDIR)$(configdir)/suckmt.ini has been backed up as "$(DESTDIR)$(configdir)/suckmt.ini-backup-${NOW}"; \
+ 	fi
+-	suckmt -init -i $(configdir)/suckmt.ini
++	./suckmt -init -i $(DESTDIR)$(configdir)/suckmt.ini
+ 
+ rpminstall: all suckmt.ini.sample
+ 	@echo "Creating directories..."
+-	$(INSTALL) -d $(bindir) $(datadir) $(datadir)/in.coming $(docdir) 
++	$(INSTALL) -d $(DESTDIR)$(bindir) $(DESTDIR)$(datadir) $(DESTDIR)$(datadir)/in.coming $(DESTDIR)$(docdir) 
+ 	@echo "Installing $(bin_PROGRAMS) executable..."
+-	$(INSTALL_PROGRAM) $(bin_PROGRAMS) $(bindir)/$(bin_PROGRAMS)
++	$(INSTALL_PROGRAM) $(bin_PROGRAMS) $(DESTDIR)$(bindir)/$(bin_PROGRAMS)
+ 	@echo "Creating default configuration file..."
+-	[ -d $(configdir) ] || $(INSTALL) -d $(configdir)
+-	touch $(configdir)/suckmt.ini
++	[ -d $(DESTDIR)$(configdir) ] || $(INSTALL) -d $(DESTDIR)$(configdir)
++	touch $(DESTDIR)$(configdir)/suckmt.ini
+ 	@echo "Installing documentation..."
+-	#$(INSTALL_DATA) suckmt.1 $(man1dir)/suckmt.1
+-	for f in $(DOCS); do $(INSTALL_DATA) $$f $(docdir)/$$f; done
++	for f in $(DOCS); do $(INSTALL_DATA) $$f $(DESTDIR)$(docdir)/$$f; done
+ 
+ rpm: CopyrightMessage suckmt.lsm suckmt.spec suckmt.ini.sample dist 
+ 	rpm -ta $(distdir).tar.gz  

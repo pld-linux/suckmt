@@ -6,7 +6,9 @@ Release:	3
 License:	GPL
 Group:		Applications/News
 Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
+# Source0-md5:	2ebb3480f6aa9c80858ba4b1732e2a20
 Source1:	%{name}-scripts.tar.gz
+# Source1-md5:	7355887f92e953171b903253c4c004e1
 Patch0:		%{name}-DESTDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake

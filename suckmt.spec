@@ -5,8 +5,6 @@ Version:	0.54
 Release:	2
 License:	GPL
 Group:		Applications/News
-Group(de):	Applikationen/News
-Group(pl):	Aplikacje/News
 Source0:	http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
 Source1:	suckmt-scripts.tar.gz
 Patch:		suckmt-DESTDIR.patch

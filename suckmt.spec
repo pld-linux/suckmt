@@ -46,7 +46,7 @@ tar zx -f %{SOURCE1} -C $RPM_BUILD_ROOT%{_var}/lib/suckmt
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf INSTALL README ChangeLog suckmt.ini.sample AUTHORS COPYING NEWS
+gzip -9nf INSTALL README ChangeLog suckmt.ini.sample AUTHORS NEWS
 
 %clean
 rm -rf $RPM_BUILD_ROOT

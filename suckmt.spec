@@ -3,7 +3,7 @@ Name:		suckmt
 Version:	0.41
 Release:	1
 Source:		http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 License:	GPL
 Group:		News
 Provides:	news-sucker

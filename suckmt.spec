@@ -5,7 +5,7 @@ Release:	1
 Source:		http://www.wirehub.nl/~basjesn/Files/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 License:	GPL
-Group:		News
+Group:		Applications/News
 Provides:	news-sucker
 
 %description

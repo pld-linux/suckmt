@@ -33,7 +33,7 @@ do serwera NNTP potrzebujesz narzêdzi z pakietu suck.
 %patch -p0
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure

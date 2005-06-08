@@ -13,6 +13,7 @@ Patch0:		%{name}-ac.patch
 URL:		http://oss.basjes.nl/SuckMT/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libstdc++-devel
 Provides:	news-sucker
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc INSTALL README ChangeLog suckmt.ini.sample AUTHORS NEWS
 %attr(755,root,root) %{_bindir}/suckmt
 %attr(750,news,news) %dir %{_sysconfdir}/suckmt
-%config(noreplace,missingok) %verify(not md5 size mtime) %attr(660,news,news) %{_sysconfdir}/suckmt/suckmt.ini
+%config(noreplace,missingok) %verify(not md5 mtime size) %attr(660,news,news) %{_sysconfdir}/suckmt/suckmt.ini
 %attr(750,news,news) %dir %{_var}/spool/suckmt
 %attr(750,news,news) %dir %{_var}/spool/suckmt/in.coming
 %attr(750,news,news) %dir %{_var}/lib/suckmt

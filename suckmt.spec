@@ -1,5 +1,5 @@
 Summary:	SuckMT, a multithreaded suck replacement
-Summary(pl):	SuckMT - wielow±tkowy zamiennik sucka
+Summary(pl.UTF-8):   SuckMT - wielowÄ…tkowy zamiennik sucka
 Name:		suckmt
 Version:	0.55
 Release:	1
@@ -25,12 +25,12 @@ suck: SuckMT will open several NNTP connections simultaneously to
 reduce the required connect time. To upload new messages back to the
 NNTP server you will still need tools from the suck package.
 
-%description -l pl
-SuckMT to program do ¶ci±gania newsów z serwera NNTP na twój lokalny
-komputer. Inspiracj± by³ program suck, od którego SuckMT do¶æ wyra¼nie
-siê odró¿nia: SuckMT otwiera kilka równoleg³ych po³±czeñ z serwerem
-NNTP aby ograniczyæ czas po³±czenia. Aby przes³aæ artyku³y z powrotem
-do serwera NNTP potrzebujesz narzêdzi z pakietu suck.
+%description -l pl.UTF-8
+SuckMT to program do Å›ciÄ…gania newsÃ³w z serwera NNTP na twÃ³j lokalny
+komputer. InspiracjÄ… byÅ‚ program suck, od ktÃ³rego SuckMT doÅ›Ä‡ wyraÅºnie
+siÄ™ odrÃ³Å¼nia: SuckMT otwiera kilka rÃ³wnolegÅ‚ych poÅ‚Ä…czeÅ„ z serwerem
+NNTP aby ograniczyÄ‡ czas poÅ‚Ä…czenia. Aby przesÅ‚aÄ‡ artykuÅ‚y z powrotem
+do serwera NNTP potrzebujesz narzÄ™dzi z pakietu suck.
 
 %prep
 %setup -q

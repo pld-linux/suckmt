@@ -1,5 +1,5 @@
 Summary:	SuckMT, a multithreaded suck replacement
-Summary(pl.UTF-8):   SuckMT - wielowątkowy zamiennik sucka
+Summary(pl.UTF-8):	SuckMT - wielowątkowy zamiennik sucka
 Name:		suckmt
 Version:	0.55
 Release:	1
